@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/* ========== 颜色变量（浅色默认） ========== */
+:root {
+  --bg: #ffffff;
+  --text: #111827;            /* gray-900 */
+  --muted: #4b5563;           /* gray-600 */
+  --border: #e5e7eb;          /* gray-200 */
+
+  --accent: #2563eb;          /* blue-600 */
+  --accent-50: #eff6ff;       /* blue-50 */
+  --accent-600: #2563eb;      /* blue-600 */
+  --accent-800: #1e40af;      /* blue-800 */
+
+  --card-bg: #ffffff;
+  --shadow-soft: 0 2px 12px rgba(59,130,246,0.15);
+}
+
+/* 可选：深色主题（给 <html> 或 <body> 加 .theme-dark 即可切换） */
+.theme-dark {
+  --bg: #0a0a0a;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --border: #1f2937;
+
+  --accent: #60a5fa;          /* blue-400 */
+  --accent-50: rgba(59,130,246,0.1);
+  --accent-600: #60a5fa;
+  --accent-800: #93c5fd;
+
+  --card-bg: #0f1115;
+  --shadow-soft: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+/* 全局应用 */
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Montserrat", sans-serif;
+}
+
+/* ========== 抽象出来的组件样式 ========== */
+@layer utilities {
+  /* 版块容器 */
+  .section {
+    @apply min-h-screen flex items-center justify-center;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .section-pad {
+    @apply py-20;
+  }
+
+  .container-narrow {
+    @apply max-w-3xl mx-auto px-4;
+  }
+
+  .container-wide {
+    @apply max-w-5xl mx-auto px-4;
+  }
+
+  /* 标题渐变 */
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-8 text-center;
+    background-image: linear-gradient(90deg, #2563eb, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+    /* 标题渐变 */
+  .hero-title {
+    @apply text-5xl md:text-7xl font-bold mb-8 text-center;
+    background-image: linear-gradient(90deg, #2563eb, #06b6d4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* 文本（次要说明） */
+  .muted {
+    color: var(--muted);
+  }
+
+  /* 卡片 */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    @apply rounded-xl p-6 transition;
+  }
+  .card-lg { @apply p-8; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: var(--shadow-soft); }
+  .card-border-hover:hover { border-color: var(--accent-600); }
+
+  /* 技术标签 */
+  .tag {
+    @apply rounded-full text-sm py-1 px-3 transition;
+    background: var(--accent-50);
+    color: var(--accent-600);
+  }
+  .tag:hover { background: color-mix(in srgb, var(--accent-50) 70%, white 0%); }
+
+  /* 链接 */
+  .link-primary {
+    color: var(--accent-600);
+    @apply transition-colors;
+  }
+  .link-primary:hover { color: var(--accent-800); }
+
+
+  /* 按钮基类 */
+.btn {
+  @apply rounded font-medium py-3 px-6 transition;
+}
+
+/* 主按钮 */
+.btn-primary {
+  @apply rounded font-medium py-3 px-6 transition text-white bg-blue-600;
+}
+.btn-primary:hover {
+  @apply -translate-y-0.5 shadow-lg;
+  box-shadow: 0 0 15px rgba(59, 130, 246, .35);
+}
+
+/* 次按钮 */
+.btn-secondary {
+  @apply rounded font-medium py-3 px-6 transition border border-blue-600 text-blue-600 bg-transparent;
+}
+.btn-secondary:hover {
+  @apply -translate-y-0.5;
+  background: #eff6ff; /* Tailwind 的 blue-50 */
+  box-shadow: 0 0 15px rgba(59, 130, 246, .2);
+}
+
+}
+
+
