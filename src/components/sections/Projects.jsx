@@ -9,7 +9,7 @@ export const Projects = () => {
       <RevealOnScroll>
         <div className="max-w-7xl mx-auto px-4">
           {/* 标题 */}
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent text-center">
+          <h2 className="section-title">
             Featured Projects
           </h2>
 
@@ -30,9 +30,9 @@ export const Projects = () => {
             </div>
 
             {/* 其它项目卡片（保持一致样式） */}
-            <div className="p-6 rounded-xl border border-gray-200 hover:-translate-y-1 hover:border-blue-300 hover:shadow-[0_2px_12px_rgba(59,130,246,0.15)] transition bg-white">
+            <div className="card card-hover card-border-hover">
               <h3 className="text-xl font-bold mb-2">AI Analytics Dashboard</h3>
-              <p className="text-gray-600 mb-4">
+               <p className="muted mb-4">
                 ML-powered data visualization platform with predictive analytics
                 and interactive reports.
               </p>
@@ -40,7 +40,7 @@ export const Projects = () => {
                 {["Python", "TensorFlow", "D3.js", "Flask"].map((tech, key) => (
                   <span
                     key={key}
-                    className="bg-blue-50 text-blue-600 py-1 px-3 rounded-full text-sm hover:bg-blue-100 transition"
+                    className="tag"
                   >
                     {tech}
                   </span>
@@ -49,7 +49,7 @@ export const Projects = () => {
               <div className="flex justify-between items-center">
                 <a
                   href="#"
-                  className="text-blue-600 hover:text-blue-800 transition-colors my-4"
+                  className="link-primary my-4 inline-block"
                 >
                   View Project →
                 </a>
