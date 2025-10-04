@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-
+import favicon from "../assets/favicon.svg";
 export const Navbar = () => {
   const getHash = () =>
     (typeof window !== "undefined" && window.location.hash.replace("#", "")) ||
@@ -60,7 +60,7 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* 左侧 Logo */}
           <div className="flex items-center space-x-2">
-            <img className="w-8 h-8" src="src\assets\favicon.svg" alt="" />
+            <img className="w-8 h-8" src={favicon} alt="" />
             <span className="font-semibold text-lg text-gray-900">Wang Ye</span>
           </div>
 

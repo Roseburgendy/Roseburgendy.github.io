@@ -1,4 +1,5 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import profile from "../../assets/profile.jpg";
 
 export const Home = () => {
   return (
@@ -38,7 +39,7 @@ export const Home = () => {
           {/* 右侧：个人介绍卡片 */}
           <div className="bg-white border rounded-xl p-6 shadow flex gap-4 items-center">
             <img
-              src="src\assets\profile.jpg"
+              src={profile}
               className="w-50 h-50 object-cover rounded-lg border"
             />
             <div>
