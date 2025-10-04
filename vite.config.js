@@ -6,4 +6,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   base: "/personal-portfolio/",
+  server: {
+    host: '127.0.0.1',
+    port: 8080,
+    strictPort: true  
+  }
 });

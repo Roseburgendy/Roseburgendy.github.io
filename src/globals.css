@@ -7,7 +7,7 @@
   --muted: #4b5563;           /* gray-600 */
   --border: #e5e7eb;          /* gray-200 */
 
-  --accent: #2563eb;          /* blue-600 */
+  --accent: #ff88ae4;          /* blue-600 */
   --accent-50: #eff6ff;       /* blue-50 */
   --accent-600: #2563eb;      /* blue-600 */
   --accent-800: #1e40af;      /* blue-800 */
@@ -46,6 +46,11 @@ html, body {
   /* 版块容器 */
   .section {
     @apply min-h-screen flex items-center justify-center;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .section-home {
+    @apply py-30 pb-0; /* 根据内容自适应高度 */
     background: var(--bg);
     color: var(--text);
   }
@@ -109,32 +114,146 @@ html, body {
     @apply transition-colors;
   }
   .link-primary:hover { color: var(--accent-800); }
-
-
-  /* 按钮基类 */
-.btn {
+     /* 按钮基类 */
+  .btn {
   @apply rounded font-medium py-3 px-6 transition;
+  }
+
+  /* 主按钮 */
+  .btn-primary {
+   @apply rounded font-medium py-3 px-6 transition text-white bg-blue-600;
+  }
+  .btn-primary:hover {
+    @apply -translate-y-0.5 shadow-lg;
+    box-shadow: 0 0 15px rgba(59, 130, 246, .35);
+  }
+
+  /* 次按钮 */
+  .btn-secondary {
+    @apply rounded font-medium py-3 px-6 transition border border-blue-600 text-blue-600 bg-transparent;
+  }
+  .btn-secondary:hover {
+    @apply -translate-y-0.5;
+    background: #eff6ff; /* Tailwind 的 blue-50 */
+    box-shadow: 0 0 15px rgba(59, 130, 246, .2);
+  }
+
 }
 
-/* 主按钮 */
-.btn-primary {
-  @apply rounded font-medium py-3 px-6 transition text-white bg-blue-600;
-}
-.btn-primary:hover {
-  @apply -translate-y-0.5 shadow-lg;
-  box-shadow: 0 0 15px rgba(59, 130, 246, .35);
+
+/* ===== Flower Loader ===== */
+.flower {
+  --size: 64px;              /* 组件整体尺寸 */
+  --petals: 12;              /* 花瓣数量 */
+  --radius: 26px;            /* 花瓣环半径 */
+  --petal: 10px;             /* 花瓣直径 */
+  --color: var(--accent);    /* 颜色取全局主题主色 */
+  --bgc: var(--bg);
+
+  position: relative;
+  width: var(--size);
+  height: var(--size);
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.12));
 }
 
-/* 次按钮 */
-.btn-secondary {
-  @apply rounded font-medium py-3 px-6 transition border border-blue-600 text-blue-600 bg-transparent;
-}
-.btn-secondary:hover {
-  @apply -translate-y-0.5;
-  background: #eff6ff; /* Tailwind 的 blue-50 */
-  box-shadow: 0 0 15px rgba(59, 130, 246, .2);
+/* 中心圆点 */
+.flower__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--petal) + 4px);
+  height: calc(var(--petal) + 4px);
+  transform: translate(-50%, -50%);
+  background: var(--bgc);
+  border: 2px solid var(--color);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color) 25%, transparent);
 }
 
+/* 单个花瓣（一个小圆点） */
+.flower__petal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--petal);
+  height: var(--petal);
+  border-radius: 50%;
+  background: var(--color);
+  transform-origin: center;
+  /* 通过索引变量 --i 均匀分布在圆环上 */
+  transform:
+    rotate(calc(var(--i) * (360deg / var(--petals))))
+    translateY(calc(-1 * var(--radius)));
+  /* 轻微呼吸动画，形成花朵绽放感 */
+  animation: petalPulse 1.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.06s);
+  opacity: .35;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color) 60%, transparent);
 }
 
 
+/* 花朵整体旋转一点点，增强动感（可选） */
+.flower--spin {
+  animation: flowerSpin 6s linear infinite;
+}
+
+
+/* ========= 动画 utilities ========= */
+
+@layer utilities {
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 0.8s step-end infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+
+  .animate-loading-bar {
+    animation: loading 0.8s ease infinite;
+  }
+
+  @keyframes petalPulse {
+  0%   { transform: rotate(calc(var(--i) * (360deg / var(--petals)))) translateY(calc(-1 * var(--radius))) scale(.9); opacity: .3; }
+  50%  { transform: rotate(calc(var(--i) * (360deg / var(--petals)))) translateY(calc(-1 * var(--radius))) scale(1.2); opacity: .9; }
+  100% { transform: rotate(calc(var(--i) * (360deg / var(--petals)))) translateY(calc(-1 * var(--radius))) scale(.9); opacity: .3; }
+}
+
+
+  @keyframes flowerSpin {
+  to { transform: rotate(360deg); }
+  }
+
+
+  /* 结束时淡出（可选） */
+  @keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+  }
+.fade-out { animation: fadeOut .6s ease forwards; }
+}
+/* ========= Reveal 动画 ========= */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

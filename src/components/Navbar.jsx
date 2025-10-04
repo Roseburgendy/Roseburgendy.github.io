@@ -60,7 +60,7 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* 左侧 Logo */}
           <div className="flex items-center space-x-2">
-            <span className="w-4 h-4 rounded-full bg-purple-400"></span>
+            <img className="w-8 h-8" src="src\assets\favicon.svg" alt="" />
             <span className="font-semibold text-lg text-gray-900">Wang Ye</span>
           </div>
 
