@@ -49,19 +49,22 @@ export const Navbar = ({ currentPage }) => {
           <div className="flex items-center gap-8">
             {/* 左侧 Logo */}
             <a href="#home" className="flex items-center hover:opacity-80 transition-opacity">
-              <img src={icon} alt="Logo" className="w-8 h-8" />
+              <img src={icon} alt="Logo" className="w-10 h-10" />
             </a>
 
             {/* 胶囊菜单 */}
             <div className="flex gap-6 items-center">
               <a href="#projects" className={navItemClass(currentPage === "projects")}>
-                <p className="tracking-[1.8px] text-[14px] text-[#201f26]">PROJECTS</p>
+                <p className="tracking-[1.8px] font-semibold text-[14px] text-[#201f26]">PROJECTS</p>
               </a>
               <a href="#about" className={navItemClass(currentPage === "about")}>
-                <p className="tracking-[1.8px] text-[14px] text-[#201f26]">ABOUT</p>
+                <p className="tracking-[1.8px] font-semibold text-[14px] text-[#201f26]">ABOUT</p>
+              </a>
+              <a href="#contact" className={navItemClass(currentPage === "contact")}>
+                <p className="tracking-[1.8px] font-semibold text-[14px] text-[#201f26]">CONTACT</p>
               </a>
               <a href="/resume.pdf" className={navItemClass(false)}>
-                <p className="tracking-[1.8px] text-[14px] text-[#201f26]">RESUME</p>
+                <p className="tracking-[1.8px] font-semibold text-[14px] text-[#201f26]">RESUME</p>
               </a>
             </div>
           </div>
@@ -78,7 +81,7 @@ export const Navbar = ({ currentPage }) => {
         <div className="mx-4 mt-4 rounded-2xl" style={pillStyle}>
           <div className="h-[64px] px-5 flex items-center justify-between">
             <a href="#home" className="flex items-center">
-              <img src={favicon} alt="Logo" className="w-7 h-7" />
+              <img src={icon} alt="Logo" className="w-7 h-7" />
             </a>
 
             <button
@@ -94,6 +97,7 @@ export const Navbar = ({ currentPage }) => {
                   </div>
                 ) : (
                   <div className="flex flex-col gap-1.5">
+                    <span className="w-6 h-[2px] bg-[#201f26]" />
                     <span className="w-6 h-[2px] bg-[#201f26]" />
                     <span className="w-6 h-[2px] bg-[#201f26]" />
                     <span className="w-6 h-[2px] bg-[#201f26]" />
@@ -126,6 +130,13 @@ export const Navbar = ({ currentPage }) => {
                     className={`py-3 ${currentPage === "about" ? "opacity-100" : "opacity-70"} hover:opacity-100`}
                   >
                     <p className="text-[12px] tracking-[1.56px] font-semibold text-[#201f26]">ABOUT</p>
+                  </a>
+                  <a
+                    href="#contact"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="py-3 opacity-70 hover:opacity-100"
+                  >
+                    <p className="text-[12px] tracking-[1.56px] font-semibold text-[#201f26]">CONTACT</p>
                   </a>
                   <a
                     href="/resume.pdf"

@@ -1,4 +1,4 @@
-import favicon from "../assets/favicon.svg";
+import icon from "../assets/icon.svg";
 import { FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 
 export const Footer = () => {
@@ -9,7 +9,7 @@ export const Footer = () => {
         {/* Logo */}
         <div className="flex flex-col items-center md:items-start gap-4">
           <div className="w-[75px] h-[55px] flex items-center justify-center">
-            <img src={favicon} alt="Logo" className="w-10 h-10" />
+            <img src={icon} alt="Logo" className="w-10 h-10" />
           </div>
         </div>
 
@@ -26,6 +26,13 @@ export const Footer = () => {
             className="hover:opacity-70 transition-opacity whitespace-nowrap"
           >
             ABOUT
+          </a>
+
+          <a
+            href="#contact"
+            className="hover:opacity-70 transition-opacity whitespace-nowrap"
+          >
+            CONTACT
           </a>
           <a
             href="/resume.pdf"

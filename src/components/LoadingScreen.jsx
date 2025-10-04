@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import { FlowerLoader
-
- } from "./FlowerLoader";
+import { FlowerLoader} from "./FlowerLoader";
 export const LoadingScreen = ({ onComplete }) => {
   const [text, setText] = useState("");
   const fullText = "Welcome";

@@ -9,10 +9,9 @@ export const Projects = () => {
       <RevealOnScroll>
         <div className="max-w-7xl mx-auto px-4">
           {/* 标题 */}
-          <h2 className="section-title">
+          <h2 className="section-title-black">
             Featured Projects
           </h2>
-
           {/* 项目网格 */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* 项目卡片 */}

@@ -81,6 +81,13 @@ html, body {
     color: transparent;
   }
 
+    .section-title-black {
+    @apply text-2xl md:text-4xl font-bold mb-8 text-center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: black;
+  }
+
     /* 标题渐变 */
   .hero-title {
     @apply text-5xl md:text-7xl font-bold mb-8 text-center;
